@@ -19,6 +19,11 @@ const Dashboard = () => {
       setCount(0);
       ids = [];
 
+      if (!url) {
+        loaded.current = true;
+        return;
+      }
+
       gun
         .get("licom2-dev")
         .get(url)
@@ -31,8 +36,6 @@ const Dashboard = () => {
             setCount((prev) => prev + 1);
           }
         });
-
-      loaded.current = true;
     }
   }, [loaded.current, open]);
 
