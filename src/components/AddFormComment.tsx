@@ -57,7 +57,11 @@ const AddFormComment = ({ url, count }: any) => {
 
       {error && <div style={{ color: "red" }}>{error}</div>}
 
-      {count !== 0 && <div className="count">{count} comments</div>}
+      {count !== 0 && (
+        <div className="count">
+          {count} {count > 1 ? "comments" : "comment"}
+        </div>
+      )}
     </div>
   );
 };
