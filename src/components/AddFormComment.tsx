@@ -6,13 +6,17 @@ const AddFormComment = ({ url, count }: any) => {
   const gun = useGunContext();
   const [comment, setComment] = useState("");
   const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
 
   const AddComment = useCallback(async () => {
     const salt: any = nanoid();
     const id: any = nanoid(10);
     const SEA = Gun.SEA;
 
-    if (comment.length < 3) return;
+    if (comment.length < 3)
+      return setError("comment must have at least 3 characters");
+    if (username.length < 3 || username.length > 30)
+      return setError("username min 3 and max 30 characters");
 
     const hash: any = await SEA.work({ comment, id }, salt, null, {
       name: "SHA-256",
@@ -23,7 +27,10 @@ const AddFormComment = ({ url, count }: any) => {
       .get(url)
       .get(hash)
       .put({ comment, id, username }, (ack: any) => {
-        if (!ack.err) setComment("");
+        if (!ack.err) {
+          setComment("");
+          setError("");
+        }
       });
   }, [comment, username]);
 
@@ -41,7 +48,7 @@ const AddFormComment = ({ url, count }: any) => {
             AddComment();
           }}
         >
-          add comment
+          {comment.length < 3 ? "write min 3 char" : "add comment"}
         </button>
       </div>
       <input
@@ -49,7 +56,10 @@ const AddFormComment = ({ url, count }: any) => {
         onChange={(e) => setUsername(e.target.value)}
         placeholder="your name (optional)"
       />
-      <div className="count">{count} comments</div>
+
+      {error && <div style={{ color: "red" }}>{error}</div>}
+
+      {count !== 0 && <div className="count">{count} comments</div>}
     </div>
   );
 };
