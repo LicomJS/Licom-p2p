@@ -1,6 +1,5 @@
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
-import snarkdown from "snarkdown";
 import { useGunContext } from "../context";
 
 const Comment = ({ comment, date, url, id, username }: any) => {
@@ -18,10 +17,6 @@ const Comment = ({ comment, date, url, id, username }: any) => {
         voted.current = 2;
       }
     }
-
-    // return () => {
-    //   votesRef.off();
-    // };
   }, [votes]);
 
   const voteUpDown = (type: number) => {
@@ -61,26 +56,23 @@ const Comment = ({ comment, date, url, id, username }: any) => {
           &#9650;
         </span>
         {/* <span>{i}</span> */}
-        {/* <span>{"0"}</span> */}
         <span className="btn" onClick={() => voteUpDown(0)}>
           &#9660;
         </span>
       </div>
       <div className="com">
         <div className="comhead">
-          {username} {moment().from(date, true)} ago {/*| next [&ndash;]*/}
+          {username} {moment().from(date, true)} ago
           {votes && (
             <span>
-              <strong>{votes.up}</strong> up and <strong>{votes.down}</strong>{" "}
+              <strong>, {votes.up}</strong> up and <strong>{votes.down}</strong>{" "}
               votes down
             </span>
           )}
         </div>
 
         <div>{comment}</div>
-        {/* <div>{snarkdown(comment)}</div> */}
-
-        <div className="options">reply</div>
+        {/* <div className="options">reply</div> */}
       </div>
     </div>
   );
