@@ -48,7 +48,7 @@ const AddFormComment = ({ url, count }: any) => {
             AddComment();
           }}
         >
-          {comment.length < 3 ? "write min 3 char" : "add comment"}
+          {comment.length < 3 ? "at least 3 char" : "add comment"}
         </button>
       </div>
       <input
