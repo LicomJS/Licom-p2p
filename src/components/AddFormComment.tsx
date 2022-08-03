@@ -13,10 +13,8 @@ const AddFormComment = ({ url, count }: any) => {
     const id: any = nanoid(10);
     const SEA = Gun.SEA;
 
-    if (comment.length < 3)
-      return setError("comment must have at least 3 characters");
-    if (username.length < 3 || username.length > 30)
-      return setError("username min 3 and max 30 characters");
+    if (comment.length < 3) return;
+    if (username.length > 30) return setError("username max 30 characters");
 
     const hash: any = await SEA.work({ comment, id }, salt, null, {
       name: "SHA-256",
