@@ -182,6 +182,49 @@ textarea {
   justify-content: center;
 }
 
+// chat mode
+.chat {
+  .cbox {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+  }
+
+  .formComment {
+    textarea,
+    button {
+      margin: 0;
+    }
+  }
+
+  .commentsbox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    order: -1;
+  }
+
+  .username,
+  .count,
+  footer {
+    display: none;
+  }
+}
+
+.chatbox {
+  label {
+    position: absolute;
+    display: flex;
+    width: 50px;
+    right: 0;
+    top: 0;
+    margin: 5px;
+    margin-right: 15px;
+  }
+}
+// /chat mode
+
 // header {}
 // main {}
 footer {

@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from "react";
+import { useState, useRef, useLayoutEffect, useEffect } from "react";
 import AddFormComment from "./AddFormComment";
 import Comment from "./Comment";
 import { getUrl } from "../util";
@@ -9,9 +9,15 @@ const Dashboard = () => {
   const [comments, setComments] = useState<string[]>([]);
   const [count, setCount] = useState<number>(0);
   const [open, setOpen] = useState<number>(0);
+  const [chatmode, setChatmode] = useState<any>(false);
   const [url, setUrl] = useState<any>(getUrl());
   const loaded = useRef(false);
   let ids: string[] = [];
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [comments]);
 
   useLayoutEffect(() => {
     if (loaded.current === false) {
@@ -44,7 +50,7 @@ const Dashboard = () => {
   // 2 change - show input | no form
 
   return (
-    <div>
+    <div className={chatmode && "chat"}>
       <div className="urlbar">
         {open === 2 || (open === 0 && !url) ? (
           <div>
@@ -69,18 +75,30 @@ const Dashboard = () => {
             </button>
           </div>
         ) : (
-          <div className="url" onClick={() => setOpen(2)}>
-            {url}
+          <div>
+            <div className="url" onClick={() => setOpen(2)}>
+              {url}
+            </div>
+            <div className="chatbox">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={chatmode}
+                  onChange={() => setChatmode((prev: boolean) => !prev)}
+                />
+                chat mode
+              </label>
+            </div>
           </div>
         )}
       </div>
 
       {(open === 1 || (open === 0 && url)) && (
-        <div>
+        <div className="cbox">
           <AddFormComment url={url} count={count} />
 
           {comments.length ? (
-            <div>
+            <div className="commentsbox">
               {comments.map((data: any, i: any) => (
                 <div key={i}>
                   <Comment
@@ -90,6 +108,7 @@ const Dashboard = () => {
                     url={url}
                     id={data.id}
                   />
+                  <div ref={messagesEndRef} />
                 </div>
               ))}
             </div>
@@ -98,6 +117,10 @@ const Dashboard = () => {
           )}
         </div>
       )}
+
+      <footer>
+        <a href="https://github.com/skorotkiewicz/Licom-p2p">opensource</a>
+      </footer>
     </div>
   );
 };

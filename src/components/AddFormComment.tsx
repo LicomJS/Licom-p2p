@@ -39,6 +39,11 @@ const AddFormComment = ({ url, count }: any) => {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder="your comment"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              AddComment();
+            }
+          }}
         ></textarea>
         <button
           disabled={comment.length < 3 && true}
@@ -51,6 +56,7 @@ const AddFormComment = ({ url, count }: any) => {
       </div>
       <input
         type="text"
+        className="username"
         onChange={(e) => setUsername(e.target.value)}
         placeholder="your name (optional)"
       />

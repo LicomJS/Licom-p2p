@@ -25,9 +25,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <GunContext gun={gun}>
       <Dashboard />
-      <footer>
-        <a href="https://github.com/skorotkiewicz/Licom-p2p">opensource</a>
-      </footer>
     </GunContext>
   </React.StrictMode>
 );
