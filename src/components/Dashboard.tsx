@@ -9,7 +9,7 @@ const Dashboard = () => {
   const [comments, setComments] = useState<string[]>([]);
   const [count, setCount] = useState<number>(0);
   const [open, setOpen] = useState<number>(0);
-  const [url, setUrl] = useState<string | false>(getUrl());
+  const [url, setUrl] = useState<any>(getUrl());
   const loaded = useRef(false);
   let ids: string[] = [];
 
@@ -18,11 +18,6 @@ const Dashboard = () => {
       setComments([]);
       setCount(0);
       ids = [];
-
-      if (!url) {
-        loaded.current = true;
-        return;
-      }
 
       gun
         .get("licom2-dev")
@@ -36,6 +31,8 @@ const Dashboard = () => {
             setCount((prev) => prev + 1);
           }
         });
+
+      loaded.current = true;
     }
   }, [loaded.current, open]);
 
