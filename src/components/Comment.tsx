@@ -90,7 +90,9 @@ const Comment = ({ comment, date, url, id, username, parent }: any) => {
 
           {!parent && (
             <div className="options">
-              <span onClick={() => setReply((prev) => !prev)}>reply</span>
+              <span onClick={() => setReply((prev) => !prev)}>
+                {reply ? "cancel reply" : "reply"}
+              </span>
             </div>
           )}
         </div>
