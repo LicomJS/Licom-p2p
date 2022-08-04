@@ -2,6 +2,31 @@
 
 > New version for Licom, where users can now add comments for each web page and are saved using p2p technology.
 
-## Warning!
+> **Warning**
+> This is an experimental version so there are probably thousands of bugs.
 
-This is an experimental version so there are probably thousands of bugs.
+## Features
+
+- Thumbs up and down as vote.
+- Shrinking long comments and displaying whole comment after clicking on show more.
+- Chat mode
+
+## Setup
+
+### Developing server
+
+```
+$ cd _server
+$ yarn install
+```
+
+### Client
+
+```
+$ yarn install
+$ yarn dev
+```
+
+## Contributing
+
+If you want to help develop Licom, feel free to add a new PR! I'm happy for any help!
