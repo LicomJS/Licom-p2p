@@ -49,8 +49,6 @@ const Dashboard = () => {
             }
           }
         });
-
-      console.log(childComments);
     }
   }, [loaded.current, open]);
 
@@ -59,7 +57,7 @@ const Dashboard = () => {
   // 2 change - show input | no form
 
   return (
-    <div className={chatmode && "chat"}>
+    <div className={chatmode ? "chat" : ""}>
       <div className="urlbar">
         {open === 2 || (open === 0 && !url) ? (
           <div>
