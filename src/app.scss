@@ -173,22 +173,25 @@ textarea {
 
 .urlbar {
   padding: 15px 0 0 20px;
+  background-color: #3c3c3c;
+  border-bottom: 5px solid #1d1d1d;
 
   .url {
     text-decoration: underline;
     width: 80vw;
+    color: #909090;
 
     &::before {
       content: url("./assets/search.svg");
       margin-right: 5px;
-      background-color: #3f3f3f;
+      background-color: #595959;
       border-radius: 3rem;
       width: 25px;
       height: 22px;
       // padding: 1px;
-      border-bottom: 3px solid #505050;
-      border-left: 2px solid #505050;
-      border-right: 2px solid #505050;
+      border-bottom: 3px solid #313131;
+      border-left: 2px solid #313131;
+      border-right: 2px solid #313131;
     }
   }
 
