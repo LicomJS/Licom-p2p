@@ -13,13 +13,24 @@ import Dashboard from "./components/Dashboard";
 const gun = Gun();
 
 gun.opt({
-  peers: [
-    "http://localhost:8765/gun",
-    // "https://grizzly.de1.hashbang.sh/gun",
-    // "https://gun-manhattan.herokuapp.com/gun",
-  ],
+  peers:
+    process.env.NODE_ENV === "development"
+      ? ["http://localhost:8765/gun"]
+      : [
+          "https://grizzly.de1.hashbang.sh/gun",
+          // "https://gun-manhattan.herokuapp.com/gun",
+        ],
   localStorage: false,
 });
+
+// gun.opt({
+//   peers: [
+//     "http://localhost:8765/gun",
+//     // "https://grizzly.de1.hashbang.sh/gun",
+//     // "https://gun-manhattan.herokuapp.com/gun",
+//   ],
+//   localStorage: false,
+// });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
