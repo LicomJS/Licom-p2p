@@ -10,9 +10,9 @@ const Dashboard = () => {
   const [childComments, setChildComments] = useState<string[]>([]);
   const [count, setCount] = useState<number>(0);
   const [open, setOpen] = useState<number>(0);
-  const [chatmode, setChatmode] = useState<any>(false);
+  const [chatmode, setChatmode] = useState<boolean>(false);
   const [url, setUrl] = useState<any>(getUrl());
-  const loaded = useRef(false);
+  const loaded = useRef<boolean>(false);
   let ids: string[] = [];
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
