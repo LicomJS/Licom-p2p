@@ -16,7 +16,7 @@ New version for Licom, where users can now add comments for each web page and ar
 ### Developing server
 
 ```
-$ cd _server
+$ git clone https://github.com/LicomJS/Licom-gun-server
 $ yarn install
 $ node index
 ```
