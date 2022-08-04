@@ -95,7 +95,7 @@ const Dashboard = () => {
 
       {(open === 1 || (open === 0 && url)) && (
         <div className="cbox">
-          <AddFormComment url={url} count={count} />
+          <AddFormComment url={url} count={count} chatmode={chatmode} />
 
           {comments.length ? (
             <div className="commentsbox">

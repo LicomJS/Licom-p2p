@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { nanoid } from "nanoid";
 import { useGunContext } from "../context";
 
-const AddFormComment = ({ url, count }: any) => {
+const AddFormComment = ({ url, count, chatmode }: any) => {
   const gun = useGunContext();
   const [comment, setComment] = useState("");
   const [username, setUsername] = useState("");
@@ -38,9 +38,11 @@ const AddFormComment = ({ url, count }: any) => {
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          placeholder="your comment"
+          placeholder={
+            chatmode ? "your comment (submit on enter)" : "your comment"
+          }
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
+            if (e.key === "Enter" && chatmode) {
               AddComment();
             }
           }}
