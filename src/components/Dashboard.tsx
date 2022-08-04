@@ -119,7 +119,9 @@ const Dashboard = () => {
       )}
 
       <footer>
-        <a href="https://github.com/skorotkiewicz/Licom-p2p">opensource</a>
+        <a href="https://github.com/LicomJS/Licom-p2p" target="_blank">
+          opensource
+        </a>
       </footer>
     </div>
   );
