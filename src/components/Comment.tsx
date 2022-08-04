@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useGunContext } from "../context";
 import { Ellipsis, EllipsisMode } from "react-simple-ellipsis";
 import AddFormComment from "./AddFormComment";
-import { stringToColour } from "../util";
+// import { stringToColour } from "../util";
 
 const Comment = ({ comment, date, url, id, username, parent }: any) => {
   const gun = useGunContext();
@@ -95,8 +95,7 @@ const Comment = ({ comment, date, url, id, username, parent }: any) => {
           )}
         </div>
 
-        <div
-          className={`color`}
+        {/* <div
           style={{
             backgroundColor: stringToColour(parent ? parent : id),
             opacity: 0.5,
@@ -104,7 +103,7 @@ const Comment = ({ comment, date, url, id, username, parent }: any) => {
           }}
         >
           X
-        </div>
+        </div> */}
       </div>
       <div className="replyBox">
         {reply && (
