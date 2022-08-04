@@ -37,8 +37,8 @@ const Dashboard = () => {
         .once()
         .on((data: any) => {
           if (!ids.includes(data.id) && data.comment) {
-            setComments((prev: any) => [...prev, data]);
             ids.push(data.id);
+            setComments((prev: any) => [...prev, data]);
             setCount((prev) => prev + 1);
           }
         });
