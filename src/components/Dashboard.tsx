@@ -16,7 +16,7 @@ const Dashboard = () => {
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    chatmode && messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [comments]);
 
   useLayoutEffect(() => {
