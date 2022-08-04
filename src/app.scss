@@ -45,6 +45,11 @@
     }
   }
 
+  .more {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
   .com {
     padding: 0 5px 0 5px;
     color: #828282;
@@ -229,7 +234,6 @@ textarea {
 // header {}
 // main {}
 footer {
-  position: absolute;
-  bottom: 0;
   margin: 5px;
+  text-decoration: underline;
 }

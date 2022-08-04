@@ -824,6 +824,11 @@ react-refresh@^0.14.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.14.0.tgz#4e02825378a5f227079554d4284889354e5f553e"
   integrity sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==
 
+react-simple-ellipsis@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-simple-ellipsis/-/react-simple-ellipsis-1.0.8.tgz#171c70be0c0339c6929b8aacd32de708f9cdff49"
+  integrity sha512-W6iXkYVUt+0c6Fb2//wgWz8SmzAXt16HFwIl5QEexZKG4m3S2U+ioLlriMrpFB1Z5DgxAiWKKxLo8kqYoEvf/A==
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"

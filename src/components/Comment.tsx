@@ -1,6 +1,7 @@
 import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import { useGunContext } from "../context";
+import { Ellipsis, EllipsisMode } from "react-simple-ellipsis";
 
 const Comment = ({ comment, date, url, id, username }: any) => {
   const gun = useGunContext();
@@ -71,7 +72,19 @@ const Comment = ({ comment, date, url, id, username }: any) => {
           )}
         </div>
 
-        <div>{comment}</div>
+        <div>
+          <Ellipsis
+            ellipsis="..."
+            label={"Show more"}
+            id={id}
+            text={comment}
+            limit={200}
+            mode={EllipsisMode.InPlace}
+            class="more"
+          />
+        </div>
+
+        {/* <div>{comment}</div> */}
         {/* <div className="options">reply</div> */}
       </div>
     </div>
