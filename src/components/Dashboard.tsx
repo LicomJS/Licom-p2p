@@ -7,6 +7,7 @@ import { useGunContext } from "../context";
 const Dashboard = () => {
   const gun = useGunContext();
   const [comments, setComments] = useState<string[]>([]);
+  const [childComments, setChildComments] = useState<string[]>([]);
   const [count, setCount] = useState<number>(0);
   const [open, setOpen] = useState<number>(0);
   const [chatmode, setChatmode] = useState<any>(false);
@@ -22,6 +23,7 @@ const Dashboard = () => {
   useLayoutEffect(() => {
     if (loaded.current === false) {
       setComments([]);
+      setChildComments([]);
       setCount(0);
       ids = [];
 
@@ -38,10 +40,17 @@ const Dashboard = () => {
         .on((data: any) => {
           if (!ids.includes(data.id) && data.comment) {
             ids.push(data.id);
-            setComments((prev: any) => [...prev, data]);
             setCount((prev) => prev + 1);
+
+            if (data.parent) {
+              setChildComments((prev: any) => [...prev, data]);
+            } else {
+              setComments((prev: any) => [...prev, data]);
+            }
           }
         });
+
+      console.log(childComments);
     }
   }, [loaded.current, open]);
 
@@ -107,7 +116,24 @@ const Dashboard = () => {
                     date={data._[">"].comment}
                     url={url}
                     id={data.id}
+                    parent={data.parent ? data.parent : null}
                   />
+                  {childComments.map((child: any, ii: any) => (
+                    <div key={ii}>
+                      {data.id === child.parent && (
+                        <Comment
+                          comment={child.comment}
+                          username={
+                            child.username ? child.username : "Anonymouse"
+                          }
+                          date={child._[">"].comment}
+                          url={url}
+                          id={child.id}
+                          parent={child.parent ? child.parent : null}
+                        />
+                      )}
+                    </div>
+                  ))}
                   <div ref={messagesEndRef} />
                 </div>
               ))}

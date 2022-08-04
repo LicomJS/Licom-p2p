@@ -62,7 +62,20 @@
 
   .options {
     padding: 5px 0px 0px 0px;
+
+    span {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
+}
+
+.parent {
+  margin-left: 20px;
+}
+
+.replyBox {
+  margin-left: 30px;
 }
 
 .sub {

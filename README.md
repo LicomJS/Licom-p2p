@@ -10,6 +10,7 @@ New version for Licom, where users can now add comments for each web page and ar
 - Thumbs up and down as vote.
 - Shrinking long comments and displaying whole comment after clicking on show more.
 - Chat mode
+- Replying to comments.
 
 ## Setup
 

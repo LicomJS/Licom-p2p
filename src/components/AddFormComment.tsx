@@ -2,7 +2,13 @@ import { useState, useCallback } from "react";
 import { nanoid } from "nanoid";
 import { useGunContext } from "../context";
 
-const AddFormComment = ({ url, count, chatmode }: any) => {
+const AddFormComment = ({
+  url,
+  count,
+  chatmode,
+  commentid = null,
+  setReply,
+}: any) => {
   const gun = useGunContext();
   const [comment, setComment] = useState("");
   const [username, setUsername] = useState("");
@@ -24,10 +30,11 @@ const AddFormComment = ({ url, count, chatmode }: any) => {
       .get("licom2-dev")
       .get(url)
       .get(hash)
-      .put({ comment, id, username }, (ack: any) => {
+      .put({ comment, id, username, parent: commentid }, (ack: any) => {
         if (!ack.err) {
           setComment("");
           setError("");
+          setReply(false);
         }
       });
   }, [comment, username]);
@@ -65,7 +72,7 @@ const AddFormComment = ({ url, count, chatmode }: any) => {
 
       {error && <div style={{ color: "red" }}>{error}</div>}
 
-      {count !== 0 && (
+      {count !== 0 && !commentid && (
         <div className="count">
           {count} {count > 1 ? "comments" : "comment"}
         </div>
