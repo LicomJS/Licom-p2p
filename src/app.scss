@@ -20,7 +20,7 @@
 .comhead {
   font-family: Verdana, Geneva, sans-serif;
   font-size: 8pt;
-  color: rgba(255, 255, 255, 0.87);
+  color: #bcbcbc;
   padding: 0 0 5px 0;
 }
 
@@ -66,6 +66,7 @@
     span {
       cursor: pointer;
       text-decoration: underline;
+      color: #909090;
     }
   }
 }
